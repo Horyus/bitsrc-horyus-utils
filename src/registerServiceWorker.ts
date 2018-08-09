@@ -19,7 +19,7 @@ const isLocalhost = Boolean(
     )
 );
 
-export default function register() {
+export default function register(): void {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(
@@ -33,7 +33,7 @@ export default function register() {
       return;
     }
 
-    window.addEventListener('load', () => {
+    window.addEventListener('load', (): void => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
 
       if (isLocalhost) {
@@ -42,7 +42,7 @@ export default function register() {
 
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
-        navigator.serviceWorker.ready.then(() => {
+        navigator.serviceWorker.ready.then((): void => {
           console.log(
             'This web app is being served cache-first by a service ' +
               'worker. To learn more, visit https://goo.gl/SC7cgQ'
@@ -56,14 +56,14 @@ export default function register() {
   }
 }
 
-function registerValidSW(swUrl: string) {
+function registerValidSW(swUrl: string): void {
   navigator.serviceWorker
     .register(swUrl)
-    .then(registration => {
-      registration.onupdatefound = () => {
+    .then((registration: ServiceWorkerRegistration): void => {
+      registration.onupdatefound = (): void => {
         const installingWorker = registration.installing;
         if (installingWorker) {
-          installingWorker.onstatechange = () => {
+          installingWorker.onstatechange = (): void => {
             if (installingWorker.state === 'installed') {
               if (navigator.serviceWorker.controller) {
                 // At this point, the old content will have been purged and
@@ -82,23 +82,23 @@ function registerValidSW(swUrl: string) {
         }
       };
     })
-    .catch(error => {
+    .catch((error: Error): void => {
       console.error('Error during service worker registration:', error);
     });
 }
 
-function checkValidServiceWorker(swUrl: string) {
+function checkValidServiceWorker(swUrl: string): void {
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl)
-    .then(response => {
+    .then((response: Response) => {
       // Ensure service worker exists, and that we really are getting a JS file.
       if (
         response.status === 404 ||
         response.headers.get('content-type')!.indexOf('javascript') === -1
       ) {
         // No service worker found. Probably a different app. Reload the page.
-        navigator.serviceWorker.ready.then(registration => {
-          registration.unregister().then(() => {
+        navigator.serviceWorker.ready.then((registration: ServiceWorkerRegistration): void => {
+          registration.unregister().then((): void => {
             window.location.reload();
           });
         });
@@ -107,16 +107,16 @@ function checkValidServiceWorker(swUrl: string) {
         registerValidSW(swUrl);
       }
     })
-    .catch(() => {
+    .catch((): void => {
       console.log(
         'No internet connection found. App is running in offline mode.'
       );
     });
 }
 
-export function unregister() {
+export function unregister(): void {
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.ready.then(registration => {
+    navigator.serviceWorker.ready.then((registration: ServiceWorkerRegistration): void => {
       registration.unregister();
     });
   }
