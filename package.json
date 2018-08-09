@@ -12,7 +12,8 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom --coverage",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "codecov": "codecov"
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.13",
@@ -22,6 +23,7 @@
     "@types/node": "^10.5.7",
     "@types/react": "^16.4.8",
     "@types/react-dom": "^16.0.7",
+    "codecov": "^3.0.4",
     "enzyme": "^3.4.1",
     "enzyme-adapter-react-16": "^1.2.0",
     "linted": "^1.0.3",
