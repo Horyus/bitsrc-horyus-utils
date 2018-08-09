@@ -105,7 +105,7 @@
     ],
     "globals": {
       "ts-jest": {
-        "tsConfigFile": "/private/tmp/bit_test_two/tsconfig.test.json"
+        "tsConfigFile": "./tsconfig.test.json"
       }
     }
   },
